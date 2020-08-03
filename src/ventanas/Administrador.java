@@ -30,6 +30,7 @@ public class Administrador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButtonMosElim = new javax.swing.JButton();
         jButtonRegresar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -40,17 +41,51 @@ public class Administrador extends javax.swing.JFrame {
         jLabel1.setText("Opciones de administrador");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
-        jButtonMosElim.setText("Mostrar/Eliminar usuarios");
-        getContentPane().add(jButtonMosElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+        jButtonMosElim.setText("Listar usuarios");
+        jButtonMosElim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMosElimActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonMosElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 150, 30));
 
-        jButtonRegresar.setText("Regresar");
-        getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
+        jButtonRegresar.setText("Cerrar");
+        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
+
+        jButton1.setText("Registrar usuarios");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 150, 30));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/WallpapRed.jpeg"))); // NOI18N
-        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 200));
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 240));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonMosElimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMosElimActionPerformed
+        // TODO add your handling code here:
+        new MuestraUsuarios().setVisible(true);
+    }//GEN-LAST:event_jButtonMosElimActionPerformed
+
+    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonRegresarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new RegistroUsuarios().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +123,7 @@ public class Administrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonMosElim;
     private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabel1;
