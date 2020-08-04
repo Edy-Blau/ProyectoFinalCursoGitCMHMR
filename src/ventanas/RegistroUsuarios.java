@@ -5,6 +5,11 @@
  */
 package ventanas;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author edyblau
@@ -45,6 +50,11 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonRegistrar.setText("Registrar usuario");
+        jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -62,16 +72,23 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Confirmar contraseña");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+
+        jTextUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextUserActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 180, -1));
         getContentPane().add(jTextUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 180, -1));
-
-        jPassword.setText("jPasswordField1");
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 170, -1));
-
-        jPasswordConfirmar.setText("jPasswordField1");
-        getContentPane().add(jPasswordConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 170, -1));
+        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 180, -1));
+        getContentPane().add(jPasswordConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 180, -1));
 
         jButtonRegresar.setText("Regresar");
+        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegresarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/WallpapRed.jpeg"))); // NOI18N
@@ -80,6 +97,40 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButtonRegresarActionPerformed
+
+    private void jTextUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextUserActionPerformed
+
+    private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
+        // TODO add your handling code here:
+        addUsr();
+        JOptionPane.showMessageDialog(null, "Registro Exitoso");
+    }//GEN-LAST:event_jButtonRegistrarActionPerformed
+
+    public void addUsr(){
+        try {
+            String ruta = "users.txt";
+            File file = new File(ruta);
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(jTextUser.getText()+"|"+jTextUserName.getText()+"|"+
+                     jPassword.getText()+"|"+
+                     jPasswordConfirmar.getText()+"\n"
+                    );
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }  
+    }
     /**
      * @param args the command line arguments
      */

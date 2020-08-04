@@ -5,6 +5,14 @@
  */
 package ventanas;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author edyblau
@@ -17,6 +25,7 @@ public class MuestraUsuarios extends javax.swing.JFrame {
     public MuestraUsuarios() {
         initComponents();
         this.setLocationRelativeTo(null);
+        getListUsrs();
     }
 
     /**
@@ -43,6 +52,11 @@ public class MuestraUsuarios extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         jButtonRegresar.setText("Regresar");
+        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegresarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, -1, -1));
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -63,6 +77,35 @@ public class MuestraUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButtonRegresarActionPerformed
+
+    public void getListUsrs(){
+        try {
+            String ruta = "users.txt";
+            File file = new File(ruta);
+            // Si el archivo no existe es creado
+            if(file.exists()) {
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                DefaultListModel list = new DefaultListModel();
+                jList1.setModel(list);
+                
+                String linea;
+                String [] vecValor = {};  
+                while((linea=br.readLine())!=null){
+                   vecValor = linea.split("\\|");
+                   list.addElement(vecValor[0]+",     "+vecValor[1]);
+                }
+                br.close();                
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }         
+    }
     /**
      * @param args the command line arguments
      */

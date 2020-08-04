@@ -5,6 +5,8 @@
  */
 package ventanas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author edyblau
@@ -32,8 +34,8 @@ public class LogIn extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldUser = new javax.swing.JTextField();
-        jPassword = new javax.swing.JPasswordField();
+        jUsr = new javax.swing.JTextField();
+        jPwd = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -59,12 +61,19 @@ public class LogIn extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, -1, -1));
-        getContentPane().add(jTextFieldUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 200, 30));
 
-        jPassword.setText("jPasswordField1");
-        getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 200, 30));
+        jUsr.setName(""); // NOI18N
+        getContentPane().add(jUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 200, 30));
+
+        jPwd.setName(""); // NOI18N
+        getContentPane().add(jPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 200, 30));
 
         jButton1.setText("Iniciar Sesión");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, -1, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/WallpapRed.jpeg"))); // NOI18N
@@ -78,6 +87,14 @@ public class LogIn extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        if(jUsr.getText().equals("admin")  && jPwd.getText().equals("1234")){
+            new Administrador().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,7 +138,7 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelFondo;
-    private javax.swing.JPasswordField jPassword;
-    private javax.swing.JTextField jTextFieldUser;
+    private javax.swing.JPasswordField jPwd;
+    private javax.swing.JTextField jUsr;
     // End of variables declaration//GEN-END:variables
 }
