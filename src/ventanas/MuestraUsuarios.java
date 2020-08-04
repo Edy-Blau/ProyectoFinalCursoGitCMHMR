@@ -69,6 +69,11 @@ public class MuestraUsuarios extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 400, 250));
 
         jButtonEliminar.setText("Eliminar usuario");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/WallpapRed.jpeg"))); // NOI18N
@@ -82,6 +87,16 @@ public class MuestraUsuarios extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonRegresarActionPerformed
 
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        // TODO add your handling code here:
+        
+        //Linea donde se va a ser la llamada de la funcion para borrar
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    
+    
+    
+    
     public void getListUsrs(){
         try {
             String ruta = "users.txt";
